@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+button { padding: 0.25em 0.5em; background-color: #fff; border: 1px solid #000; font-size: 16px; font-weight: 700; text-align: center; outline: none; }
+button:hover { background-color: #eee; }
+button + button { margin-left: 0.25em; }
+
+.header { text-align: center; }
+.header h1 { font-size: 24px; text-transform: uppercase; }
+.header .scores { list-style-type: none; padding: 0; margin: 0; }
+.header .scores li { display: inline-block; padding: 0 20px; }
+.header .scores li:first-child { border-right: 1px solid #000; }
+
+.ttt-container,
+.ttt-container * { box-sizing: border-box; }
+.ttt-container { position: relative; width: 100%; max-width: 304px; margin: 50px auto; }
+
+.ttt-container .ttt-winner { display: none; justify-content: center; align-items: center; position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 304px; border: 2px solid #c00; background-color: rgba(255,255,255,0.9); }
+.ttt-container .ttt-winner span { color: #c00; font-size: 50px; font-weight: 700; text-align: center; }
+.ttt-container.show-winner .ttt-winner { display: flex; }
+
+.ttt-container .ttt-board { overflow: hidden; position: relative; z-index: 1; width: 100%; border: 2px solid #000; }
+.ttt-container .ttt-board .ttt-square { float: left; position: relative; width: 100px; height: 100px; border-right: 1px solid #000; border-top: 1px solid #000;}
+.ttt-container .ttt-board .ttt-square:nth-child(-n+3) { border-top: none; }
+.ttt-container .ttt-board .ttt-square:nth-child(3),
+.ttt-container .ttt-board .ttt-square:nth-child(6),
+.ttt-container .ttt-board .ttt-square:nth-child(9) { border-right: none; }
+.ttt-container .ttt-board .ttt-square .ttt-display,
+.ttt-container .ttt-board .ttt-square .ttt-switch { display: flex; justify-content: center; align-items: center; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.ttt-container .ttt-board .ttt-square .ttt-display { z-index: 10; background-color: #fff; font-size: 70px; cursor: pointer; }
+.ttt-container .ttt-board .ttt-square .ttt-display.set { cursor: default; }
+.ttt-container .ttt-board .ttt-square[class*='editing'] .ttt-display { display: none; }
+.ttt-container .ttt-board .ttt-square .ttt-switch { z-index: 5; flex-direction: column; justify-content: center; align-items: center; background-color: #ccc; }
+.ttt-container .ttt-board .ttt-square .ttt-switch button { width: 50px; padding: 0.25em; margin: 4px 0; font-size: 10px; }
+.ttt-container .ttt-board .ttt-square.editing-x .ttt-switch button.play-o { display: none; }
+.ttt-container .ttt-board .ttt-square.editing-o .ttt-switch button.play-x { display: none; }
+
+.ttt-container .ttt-controls { padding-top: 15px; text-align: center; }
+.ttt-container .ttt-controls button { }
