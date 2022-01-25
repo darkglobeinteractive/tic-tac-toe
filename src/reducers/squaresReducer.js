@@ -1,4 +1,52 @@
-export default (squares = [], action) => {
+const INITIAL_STATE = [
+  {
+    'id': 1,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 2,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 3,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 4,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 5,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 6,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 7,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 8,
+    'symbol': null,
+    'isEditing': false
+  },
+  {
+    'id': 9,
+    'symbol': null,
+    'isEditing': false
+  }
+];
+
+export default (squares = INITIAL_STATE, action) => {
   if (action.type === 'EDITING_TOGGLED') {
     return squares.map(square => {
       if (square.id === action.payload.id && square.symbol === null) {
