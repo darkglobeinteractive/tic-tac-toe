@@ -1,15 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Header = () => {
+const Header = props => {
   return (
     <div className="header">
       <h1>Tic-Tac-Toe</h1>
       <ul className="scores">
-        <li>X Wins: []</li>
-        <li>O Wins: []</li>
+        <li>X Wins: {props.wins.x}</li>
+        <li>O Wins: {props.wins.o}</li>
       </ul>
     </div>
   );
 }
 
-export default Header;
+const mapStateToProps = state => {
+  return {
+    wins: state.wins
+  }
+}
+
+export default connect(mapStateToProps)(Header);

@@ -19,6 +19,7 @@ const Square = props => {
 
 const mapStateToProps = state => {
   return {
+    squares: state.squares,
     currentPlayer: state.currentPlayer
   }
 }

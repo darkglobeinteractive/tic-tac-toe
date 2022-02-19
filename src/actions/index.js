@@ -1,4 +1,6 @@
+import newGame from './newGame';
 import setSquare from './setSquare';
 import toggleEditing from './toggleEditing';
+import undoMove from './undoMove';
 
-export { setSquare, toggleEditing };
+export { newGame, setSquare, toggleEditing, undoMove };

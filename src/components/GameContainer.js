@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import NewGame from './NewGame';
 import Square from './Square';
 import UndoMove from './UndoMove';
 
 const GameContainer = props => {
 
   return (
-    <div className="ttt-container">
+    <div className={`ttt-container${props.alertMessage !== '' ? ' show-winner' : ''}`}>
       <div className="ttt-winner">
-        <span>[Alert Message]</span>
+        <span>{props.alertMessage}</span>
       </div>
       <div className="ttt-board">
         {props.squares.map((square, index) => {
@@ -21,7 +22,7 @@ const GameContainer = props => {
         })}
       </div>
        <div className="ttt-controls">
-         <button className="new-game">New Game</button>
+         <NewGame />
          <UndoMove />
        </div>
     </div>
@@ -30,6 +31,7 @@ const GameContainer = props => {
 
 const mapStateToProps = state => {
   return {
+    alertMessage: state.alertMessage,
     squares: state.squares
   }
 }
