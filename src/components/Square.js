@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import { setSquare, toggleEditing } from '../actions';
 
 const Square = props => {
+
+  // When a square is clicked, toggle it to edit if a symbol hasn't been set
+  const handleClick = square => {
+    if (square.symbol === null) {
+      props.toggleEditing(props.square);
+    }
+  }
+
+  // The isEditing value sets the class of editing-[currentPlayer] to display only the appropriate play button
   return (
     <div className={'ttt-square' + (props.square.isEditing ? ' editing-' + props.currentPlayer : '')}>
-      <div className="ttt-display" onClick={() => props.toggleEditing(props.square)}>
+      <div className="ttt-display" onClick={() => handleClick(props.square)}>
         <span>{props.square.symbol}</span>
       </div>
       <div className="ttt-switch">
@@ -19,7 +28,6 @@ const Square = props => {
 
 const mapStateToProps = state => {
   return {
-    squares: state.squares,
     currentPlayer: state.currentPlayer
   }
 }

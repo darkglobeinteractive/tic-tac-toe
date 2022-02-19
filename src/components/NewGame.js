@@ -4,8 +4,14 @@ import { newGame } from '../actions';
 
 const NewGame = props => {
   return (
-    <button className="new-game" onClick={props.newGame}>New Game</button>
+    <button className={`new-game${props.gameLog.length > 0 ? '' : ' disabled'}`} onClick={props.newGame}>New Game</button>
   );
 }
 
-export default connect(null, { newGame })(NewGame);
+const mapStateToProps = state => {
+  return {
+    gameLog: state.gameLog
+  }
+}
+
+export default connect(mapStateToProps, { newGame })(NewGame);

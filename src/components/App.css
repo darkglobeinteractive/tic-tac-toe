@@ -4,9 +4,10 @@ body {
   font-family: sans-serif;
 }
 
-button { padding: 0.25em 0.5em; background-color: #fff; border: 1px solid #000; font-size: 16px; font-weight: 700; text-align: center; outline: none; }
+button { box-sizing: border-box; padding: 0.25em 0.5em; background-color: #fff; border: 1px solid #000; font-size: 16px; font-weight: 700; text-align: center; outline: none; }
 button:hover { background-color: #eee; }
-button + button { margin-left: 0.25em; }
+button + button { }
+button.disabled { display: none; }
 
 .header { text-align: center; }
 .header h1 { font-size: 24px; text-transform: uppercase; }
@@ -38,5 +39,5 @@ button + button { margin-left: 0.25em; }
 .ttt-container .ttt-board .ttt-square.editing-x .ttt-switch button.play-o { display: none; }
 .ttt-container .ttt-board .ttt-square.editing-o .ttt-switch button.play-x { display: none; }
 
-.ttt-container .ttt-controls { padding-top: 15px; text-align: center; }
-.ttt-container .ttt-controls button { }
+.ttt-container .ttt-controls { display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: space-between; padding-top: 15px; }
+.ttt-container .ttt-controls button { width: 48%; }

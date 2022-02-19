@@ -16,13 +16,14 @@ const UndoMove = props => {
   }
 
   return (
-    <button className="undo-move" onClick={handleUndo}>Undo Last Move</button>
+    <button className={`undo-move${props.gameLog.length > 0 && props.alertMessage === '' ? '' : ' disabled'}`} onClick={handleUndo}>Undo Last Move</button>
   );
 
 }
 
 const mapStateToProps = state => {
   return {
+    alertMessage: state.alertMessage,
     gameLog: state.gameLog
   }
 }

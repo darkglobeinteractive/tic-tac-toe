@@ -5,7 +5,8 @@ const setSquare = (square, symbol) => {
   // We are returning a function here because we need to check state for a winner before setting the square
   return (dispatch, getState) => {
 
-    // Set variable for squares and default values for other variables
+    // We essentially need to create a temporary version of state that includes this new move
+    // We iterate through the existing "squares" state using getState().squares.map() and update the square we are setting right now
     const s = getState().squares.map(sq => {
       if (sq.id === square.id) {
         return { ...square, symbol };
@@ -13,9 +14,11 @@ const setSquare = (square, symbol) => {
         return sq;
       }
     });
-    let winner = '';
-    let alertMessage = '';
 
+    // Set some other variables we need
+    let winner = null;
+
+    // Test each winning scenario and set a winner if you can
     if (s[0].symbol !== null && s[0].symbol === s[1].symbol && s[1].symbol === s[2].symbol) { // Top 3 across
       winner = s[0].symbol;
     } else if  (s[3].symbol !== null && s[3].symbol === s[4].symbol && s[4].symbol === s[5].symbol) { // Middle 3 across
@@ -34,11 +37,9 @@ const setSquare = (square, symbol) => {
       winner = s[2].symbol;
     }
 
-    console.log('Winner: '+winner);
-    console.log(s);
-
-    if (winner !== '') {
-      alertMessage = winner + ' is the winner!';
+    // If the winner was set OR the current gameLog is 8 moves long, end the game
+    if (winner !== null || getState().gameLog.length === 8) {
+      const alertMessage = (winner === null ? 'And... we have a draw!' : winner + ' is the winner!');
       dispatch({
         type: END_GAME,
         payload: {
@@ -48,17 +49,8 @@ const setSquare = (square, symbol) => {
           alertMessage
         }
       });
-    } else if (winner === '' && getState().gameLog.length === 8) {
-      alertMessage = 'And... we have a draw!';
-      dispatch({
-        type: END_GAME,
-        payload: {
-          square,
-          symbol,
-          winner: null,
-          alertMessage
-        }
-      });
+
+    // Otherwise set the square
     } else {
       dispatch({
         type: SQUARE_SET,

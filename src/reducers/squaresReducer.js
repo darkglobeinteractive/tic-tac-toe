@@ -49,39 +49,44 @@ const INITIAL_STATE = [
 ];
 
 export default (squares = INITIAL_STATE, action) => {
+
   if (action.type === EDITING_TOGGLED) {
     return squares.map(square => {
-      if (square.id === action.payload.id && square.symbol === null) {
-        return { ...square, isEditing: !square.isEditing };
+      if (square.id === action.payload.id) {
+        return { ...square, isEditing: true };
       } else {
         return {...square, isEditing: false };
       }
     });
   }
+
+  // We are setting the square, even if it's the last move, so the game board is complete
   if (action.type === SQUARE_SET || action.type === END_GAME) {
     return squares.map(square => {
       if (square.id === action.payload.square.id) {
-        if (action.payload.symbol !== null) {
-          return { ...square, symbol: action.payload.symbol, isEditing: false };
-        } else {
-          return { ...square, isEditing: false };
-        }
+        return { ...square, symbol: action.payload.symbol, isEditing: false };
       } else {
         return square;
       }
     });
   }
+
+  // If we are undoing a move, we want to set the symbol to null and tur
   if (action.type === UNDO_MOVE) {
     return squares.map(square => {
       if (square.id === action.payload.lastSquareId) {
-        return { ...square, symbol: null, isEditing: false };
+        return { ...square, symbol: null };
       } else {
         return square;
       }
     });
   }
+
+  // A new game just resets the board
   if (action.type === NEW_GAME) {
     return INITIAL_STATE;
   }
+
   return squares;
+
 }

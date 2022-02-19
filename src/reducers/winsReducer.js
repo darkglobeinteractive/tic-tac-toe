@@ -11,4 +11,5 @@ export default (wins = { x: 0, o: 0}, action) => {
   }
 
   return wins;
+  
 }
