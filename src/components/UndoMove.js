@@ -14,6 +14,8 @@ const UndoMove = props => {
       props.undoMove(props.gameLog[lastMoveId]);
     }
   }
+
+  // If the gameLog is empty OR the alert message isn't empty (meaning game is over), then don't show the Undo button
   if (props.gameLog.length === 0 || props.alertMessage !== '') {
     return <React.Fragment />;
   }

@@ -13,7 +13,7 @@ const Square = props => {
 
   // The isEditing value sets the class of editing-[currentPlayer] to display only the appropriate play button
   return (
-    <div className={'ttt-square' + (props.square.isEditing ? ' editing-' + props.currentPlayer : '')}>
+    <div className={`ttt-square${props.square.isEditing ? ` editing-${props.currentPlayer}` : ``}`}>
       <div className="ttt-display" onClick={() => handleClick(props.square)}>
         <span>{props.square.symbol}</span>
       </div>
