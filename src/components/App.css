@@ -17,7 +17,7 @@ button.disabled { display: none; }
 
 .ttt-container,
 .ttt-container * { box-sizing: border-box; }
-.ttt-container { position: relative; width: 100%; max-width: 304px; margin: 50px auto; }
+.ttt-container { position: relative; width: 100%; max-width: 304px; margin: 20px auto; }
 
 .ttt-container .ttt-winner { display: none; justify-content: center; align-items: center; position: absolute; z-index: 2; top: 0; left: 0; width: 100%; height: 304px; border: 2px solid #c00; background-color: rgba(255,255,255,0.9); }
 .ttt-container .ttt-winner span { color: #c00; font-size: 50px; font-weight: 700; text-align: center; }
@@ -39,5 +39,6 @@ button.disabled { display: none; }
 .ttt-container .ttt-board .ttt-square.editing-x .ttt-switch button.play-o { display: none; }
 .ttt-container .ttt-board .ttt-square.editing-o .ttt-switch button.play-x { display: none; }
 
-.ttt-container .ttt-controls { display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: space-between; padding-top: 15px; }
-.ttt-container .ttt-controls button { width: 48%; }
+.ttt-container .ttt-controls { display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: center; padding-top: 15px; }
+.ttt-container .ttt-controls button { width: 49%; }
+.ttt-container .ttt-controls button + button { margin-left: 2%; }

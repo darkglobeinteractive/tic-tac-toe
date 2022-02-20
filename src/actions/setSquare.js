@@ -39,7 +39,7 @@ const setSquare = (square, symbol) => {
 
     // If the winner was set OR the current gameLog is 8 moves long, end the game
     if (winner !== null || getState().gameLog.length === 8) {
-      const alertMessage = (winner === null ? 'And... we have a draw!' : winner + ' is the winner!');
+      const alertMessage = (winner === null ? 'And... we have a draw!' : winner.toUpperCase() + ' is the winner!');
       dispatch({
         type: END_GAME,
         payload: {

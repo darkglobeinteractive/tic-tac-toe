@@ -14,9 +14,11 @@ const UndoMove = props => {
       props.undoMove(props.gameLog[lastMoveId]);
     }
   }
-
+  if (props.gameLog.length === 0 || props.alertMessage !== '') {
+    return <React.Fragment />;
+  }
   return (
-    <button className={`undo-move${props.gameLog.length > 0 && props.alertMessage === '' ? '' : ' disabled'}`} onClick={handleUndo}>Undo Last Move</button>
+    <button className="undo-move" onClick={handleUndo}>Undo Last Move</button>
   );
 
 }

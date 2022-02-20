@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import { newGame } from '../actions';
 
 const NewGame = props => {
+  if (props.gameLog.length === 0) {
+    return <></>;
+  }
   return (
-    <button className={`new-game${props.gameLog.length > 0 ? '' : ' disabled'}`} onClick={props.newGame}>New Game</button>
+    <button className="new-game" onClick={props.newGame}>New Game</button>
   );
 }
 
